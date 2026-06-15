@@ -1,0 +1,777 @@
+/* ============================================
+   CSS-MUUTTUJAT – värit ja mitat yhteen paikkaan
+   ============================================ */
+:root {
+  --vari-tausta: #faf7f2;
+  --vari-pinta: #ffffff;
+  --vari-pinta-lammin: #f3ebe0;
+  --vari-teksti: #2c2419;
+  --vari-teksti-himmea: #5c5348;
+  --vari-korostus: #b85c38;
+  --vari-korostus-tumma: #8f4528;
+  --vari-korostus-vaalea: #e8c4b0;
+  --vari-reuna: rgba(44, 36, 25, 0.1);
+  --vari-varjo: rgba(44, 36, 25, 0.08);
+
+  --fontti-otsikko: "Fraunces", Georgia, serif;
+  --fontti-teksti: "DM Sans", system-ui, sans-serif;
+
+  --sailio-leveys: 1100px;
+  --sade: 16px;
+  --sade-iso: 24px;
+  --siirtyma: 0.25s ease;
+}
+
+/* ============================================
+   PERUSTYYLIT
+   ============================================ */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: var(--fontti-teksti);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--vari-teksti);
+  background: var(--vari-tausta);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+/* Sisällön leveysrajoitus – pitää sivun siistinä */
+.sailio {
+  width: min(100% - 2rem, var(--sailio-leveys));
+  margin-inline: auto;
+}
+
+/* ============================================
+   YLÄVALIKKO
+   ============================================ */
+.ylavalikko {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(250, 247, 242, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--vari-reuna);
+  transition: box-shadow var(--siirtyma);
+}
+
+.ylavalikko--varjostettu {
+  box-shadow: 0 4px 24px var(--vari-varjo);
+}
+
+.ylavalikko .sailio {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 1rem;
+}
+
+.logo {
+  font-family: var(--fontti-otsikko);
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--vari-teksti);
+}
+
+.logo span {
+  color: var(--vari-korostus);
+}
+
+.navigaatio ul {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  list-style: none;
+}
+
+.navigaatio a {
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--vari-teksti-himmea);
+  transition: color var(--siirtyma);
+}
+
+.navigaatio a:hover,
+.navigaatio a.nav-linkki--aktiivinen {
+  color: var(--vari-korostus);
+}
+
+.nav-cta {
+  background: var(--vari-korostus);
+  color: white !important;
+  padding: 0.5rem 1.1rem;
+  border-radius: 999px;
+  transition: background var(--siirtyma), transform var(--siirtyma) !important;
+}
+
+.nav-cta:hover {
+  background: var(--vari-korostus-tumma);
+  transform: translateY(-1px);
+}
+
+/* Hamburger-nappi – näkyy vain mobiilissa */
+.valikko-nappi {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.valikko-nappi span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--vari-teksti);
+  border-radius: 2px;
+  transition: transform var(--siirtyma), opacity var(--siirtyma);
+}
+
+.valikko-nappi--auki span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.valikko-nappi--auki span:nth-child(2) {
+  opacity: 0;
+}
+
+.valikko-nappi--auki span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ============================================
+   PAINIKKEET
+   ============================================ */
+.painike {
+  display: inline-block;
+  padding: 0.9rem 1.75rem;
+  border-radius: 999px;
+  font-family: var(--fontti-teksti);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background var(--siirtyma), transform var(--siirtyma), box-shadow var(--siirtyma);
+}
+
+.painike:hover {
+  transform: translateY(-2px);
+}
+
+.painike--ensisijainen {
+  background: var(--vari-korostus);
+  color: white;
+  box-shadow: 0 4px 16px rgba(184, 92, 56, 0.3);
+}
+
+.painike--ensisijainen:hover {
+  background: var(--vari-korostus-tumma);
+}
+
+.painike--toissijainen {
+  background: transparent;
+  color: var(--vari-teksti);
+  border: 2px solid var(--vari-reuna);
+}
+
+.painike--toissijainen:hover {
+  border-color: var(--vari-korostus);
+  color: var(--vari-korostus);
+}
+
+.painike--taysi {
+  width: 100%;
+}
+
+/* ============================================
+   HERO-OSIO
+   ============================================ */
+.hero {
+  position: relative;
+  padding: 5rem 0 6rem;
+  overflow: hidden;
+}
+
+.hero-sisalto {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+}
+
+.hero-alaotsikko {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--vari-korostus);
+  margin-bottom: 1rem;
+}
+
+.hero h1 {
+  font-family: var(--fontti-otsikko);
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  color: var(--vari-teksti);
+}
+
+.hero-teksti {
+  font-size: 1.15rem;
+  color: var(--vari-teksti-himmea);
+  margin-bottom: 2rem;
+  max-width: 560px;
+}
+
+.hero-painikkeet {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.hero-koriste {
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 50%;
+  height: 120%;
+  background: radial-gradient(ellipse, var(--vari-korostus-vaalea) 0%, transparent 70%);
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* ============================================
+   OSIOT – yhteinen tyyli
+   ============================================ */
+.osio {
+  padding: 5rem 0;
+}
+
+.osio-otsikko {
+  margin-bottom: 2.5rem;
+}
+
+.osio-otsikko--keskitetty {
+  text-align: center;
+  max-width: 560px;
+  margin-inline: auto;
+  margin-bottom: 3rem;
+}
+
+.osio-otsikko h2 {
+  font-family: var(--fontti-otsikko);
+  font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.osio-otsikko p {
+  color: var(--vari-teksti-himmea);
+  font-size: 1.05rem;
+}
+
+.osio-alaotsikko {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--vari-korostus);
+  margin-bottom: 0.5rem;
+}
+
+/* ============================================
+   POLKU-KORTIT (Yritykselle / Asiantuntijalle)
+   ============================================ */
+.polut {
+  background: var(--vari-pinta);
+}
+
+.polku-kortit {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.polku-kortti {
+  background: var(--vari-tausta);
+  border: 1px solid var(--vari-reuna);
+  border-radius: var(--sade-iso);
+  padding: 2rem;
+  transition: transform var(--siirtyma), box-shadow var(--siirtyma);
+}
+
+.polku-kortti:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px var(--vari-varjo);
+}
+
+.polku-kortti__ikoni {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.polku-kortti h3 {
+  font-family: var(--fontti-otsikko);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.polku-kortti p {
+  color: var(--vari-teksti-himmea);
+  margin-bottom: 1.25rem;
+}
+
+.polku-kortti ul {
+  list-style: none;
+  margin-bottom: 1.5rem;
+}
+
+.polku-kortti li {
+  position: relative;
+  padding-left: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--vari-teksti-himmea);
+  font-size: 0.95rem;
+}
+
+.polku-kortti li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--vari-korostus);
+  font-weight: bold;
+}
+
+.polku-linkki {
+  font-weight: 600;
+  color: var(--vari-korostus);
+  text-decoration: none;
+  transition: color var(--siirtyma);
+}
+
+.polku-linkki:hover {
+  color: var(--vari-korostus-tumma);
+}
+
+/* ============================================
+   COACHINGIN HYÖDYT
+   ============================================ */
+.hyodyt {
+  background: var(--vari-pinta-lammin);
+}
+
+.hyoty-kortit {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.hyoty-kortti {
+  background: var(--vari-pinta);
+  border-radius: var(--sade);
+  padding: 1.75rem;
+  border: 1px solid var(--vari-reuna);
+}
+
+.hyoty-numero {
+  display: block;
+  font-family: var(--fontti-otsikko);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--vari-korostus);
+  margin-bottom: 0.75rem;
+}
+
+.hyoty-kortti h3 {
+  font-family: var(--fontti-otsikko);
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+}
+
+.hyoty-kortti p {
+  font-size: 0.95rem;
+  color: var(--vari-teksti-himmea);
+}
+
+/* ============================================
+   COACH-ESITTELY
+   ============================================ */
+.coach-sisalto {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.coach-kuva__placeholder {
+  aspect-ratio: 4 / 5;
+  background: linear-gradient(145deg, var(--vari-korostus-vaalea), var(--vari-pinta-lammin));
+  border-radius: var(--sade-iso);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--fontti-otsikko);
+  font-size: 3rem;
+  font-weight: 600;
+  color: var(--vari-korostus);
+}
+
+.coach-teksti h2 {
+  font-family: var(--fontti-otsikko);
+  font-size: 2rem;
+  margin-bottom: 1.25rem;
+}
+
+.coach-teksti p {
+  color: var(--vari-teksti-himmea);
+  margin-bottom: 1rem;
+}
+
+.coach-taidot {
+  list-style: none;
+  margin-top: 1.5rem;
+}
+
+.coach-taidot li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.coach-taidot li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--vari-korostus);
+}
+
+/* ============================================
+   INSPIROIDU – lainaus
+   ============================================ */
+.inspiroidu {
+  padding: 4rem 0;
+}
+
+.lainaus {
+  text-align: center;
+  max-width: 700px;
+  margin-inline: auto;
+  padding: 2.5rem;
+  background: var(--vari-pinta);
+  border-radius: var(--sade-iso);
+  border-left: 4px solid var(--vari-korostus);
+  box-shadow: 0 8px 32px var(--vari-varjo);
+}
+
+.lainaus p {
+  font-family: var(--fontti-otsikko);
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  font-style: italic;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.lainaus cite {
+  font-style: normal;
+  font-size: 0.9rem;
+  color: var(--vari-teksti-himmea);
+}
+
+/* ============================================
+   ASIAKASKOKEMUKSET
+   ============================================ */
+.kokemukset {
+  background: var(--vari-pinta);
+}
+
+.kokemus-kortit {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.kokemus-kortti {
+  background: var(--vari-tausta);
+  border-radius: var(--sade);
+  padding: 1.75rem;
+  border: 1px solid var(--vari-reuna);
+}
+
+.kokemus-teksti {
+  font-size: 1rem;
+  color: var(--vari-teksti-himmea);
+  margin-bottom: 1.25rem;
+  font-style: italic;
+}
+
+.kokemus-kortti footer {
+  font-size: 0.875rem;
+  color: var(--vari-teksti);
+}
+
+/* ============================================
+   YHTEYDENOTTO
+   ============================================ */
+.yhteys {
+  background: var(--vari-pinta-lammin);
+}
+
+.yhteys-sisalto {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.yhteys-info h2 {
+  font-family: var(--fontti-otsikko);
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.yhteys-info p {
+  color: var(--vari-teksti-himmea);
+  margin-bottom: 1.5rem;
+}
+
+.yhteys-tiedot {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.yhteys-tiedot a {
+  color: var(--vari-korostus);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.yhteys-tiedot a:hover {
+  text-decoration: underline;
+}
+
+.yhteys-lomake {
+  background: var(--vari-pinta);
+  padding: 2rem;
+  border-radius: var(--sade-iso);
+  border: 1px solid var(--vari-reuna);
+  box-shadow: 0 8px 32px var(--vari-varjo);
+}
+
+.lomake-rivi {
+  margin-bottom: 1.25rem;
+}
+
+.lomake-rivi label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.lomake-rivi input,
+.lomake-rivi textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--vari-reuna);
+  border-radius: 10px;
+  font-family: var(--fontti-teksti);
+  font-size: 1rem;
+  background: var(--vari-tausta);
+  transition: border-color var(--siirtyma), box-shadow var(--siirtyma);
+}
+
+.lomake-rivi input:focus,
+.lomake-rivi textarea:focus {
+  outline: none;
+  border-color: var(--vari-korostus);
+  box-shadow: 0 0 0 3px rgba(184, 92, 56, 0.15);
+}
+
+.lomake-rivi input.virhe,
+.lomake-rivi textarea.virhe {
+  border-color: #c0392b;
+}
+
+.virhe-viesti {
+  display: block;
+  font-size: 0.8rem;
+  color: #c0392b;
+  margin-top: 0.3rem;
+  min-height: 1.2em;
+}
+
+.lomake-viesti {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  text-align: center;
+  min-height: 1.4em;
+}
+
+.lomake-viesti--onnistui {
+  color: #2d6a4f;
+}
+
+.lomake-viesti--virhe {
+  color: #c0392b;
+}
+
+.lomake-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.painike:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+  background: var(--vari-teksti);
+  color: rgba(255, 255, 255, 0.85);
+  padding: 3rem 0 2rem;
+}
+
+.footer-sisalto {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  align-items: start;
+}
+
+.footer-brand .logo {
+  color: white;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+.footer-brand p {
+  font-size: 0.9rem;
+  opacity: 0.75;
+}
+
+.footer-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  list-style: none;
+}
+
+.footer-nav a {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color var(--siirtyma);
+}
+
+.footer-nav a:hover {
+  color: white;
+}
+
+.footer-copy {
+  grid-column: 1 / -1;
+  font-size: 0.8rem;
+  opacity: 0.55;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================
+   RESPONSIIVISUUS – mobiili
+   ============================================ */
+@media (max-width: 768px) {
+  .valikko-nappi {
+    display: flex;
+  }
+
+  .navigaatio {
+    position: fixed;
+    top: 65px;
+    left: 0;
+    right: 0;
+    background: var(--vari-pinta);
+    border-bottom: 1px solid var(--vari-reuna);
+    padding: 1rem;
+    transform: translateY(-120%);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform var(--siirtyma), opacity var(--siirtyma), visibility var(--siirtyma);
+  }
+
+  .navigaatio--auki {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .navigaatio ul {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .navigaatio li {
+    border-bottom: 1px solid var(--vari-reuna);
+  }
+
+  .navigaatio a {
+    display: block;
+    padding: 0.85rem 0.5rem;
+  }
+
+  .nav-cta {
+    text-align: center;
+    margin-top: 0.5rem;
+  }
+
+  .coach-sisalto,
+  .yhteys-sisalto {
+    grid-template-columns: 1fr;
+  }
+
+  .coach-kuva {
+    max-width: 240px;
+    margin-inline: auto;
+  }
+
+  .footer-sisalto {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer-nav ul {
+    justify-content: center;
+  }
+}

@@ -37,6 +37,27 @@ window.addEventListener("scroll", () => {
   }
 });
 
+// --- Hyotykorttien kaanto  ---
+
+document.querySelectorAll(".hyoty-kortti").forEach((kortti) => {
+
+  kortti.tabIndex = 0;
+
+  kortti.addEventListener("click", () => {
+      kortti.classList.toggle("hyoty-kortti--auki");
+  });
+
+  kortti.addEventListener("keydown", (e) => {
+
+      if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          kortti.classList.toggle("hyoty-kortti--auki");
+      }
+
+  });
+
+});
+
 // --- AKTIIVINEN VALIKKOLINKKI ---
 
 const osiot = document.querySelectorAll("section[id]");

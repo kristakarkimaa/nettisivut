@@ -1231,3 +1231,67 @@ background-repeat: no-repeat;
     justify-content: center;
   }
 }
+
+/* Evästebanneri */
+
+.evaste-banneri {
+  display: none !important;
+  position: fixed;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 9999;
+
+  background: white;
+  border-radius: 18px;
+  border: 1px solid var(--vari-reuna);
+  box-shadow: 0 15px 45px rgba(0,0,0,.18);
+  padding: 1.5rem;
+
+}
+
+.evaste-sisalto {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  align-items: center;
+}
+
+.evaste-sisalto h3 {
+  margin-bottom: .5rem;
+  font-family: var(--fontti-otsikko);
+}
+
+.evaste-sisalto p {
+  color: var(--vari-teksti-himmea);
+  max-width: 650px;
+}
+
+.evaste-painikkeet {
+  display: flex;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.evaste-banneri.evaste-banneri--nayta {
+  display: block !important;
+}
+
+@media (max-width:768px){
+
+.evaste-sisalto{
+    flex-direction:column;
+    align-items:flex-start;
+}
+
+.evaste-painikkeet{
+    width:100%;
+    flex-direction:column;
+}
+
+.evaste-painikkeet .painike{
+    width:100%;
+}
+
+
+}

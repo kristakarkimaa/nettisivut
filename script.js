@@ -180,3 +180,27 @@ lomake.addEventListener("submit", async (tapahtuma) => {
     lahetaNappi.textContent = "Lähetä viesti";
   }
 });
+
+// -------------------------------
+// Evästeet
+// -------------------------------
+
+const evasteBanneri = document.getElementById("evasteBanneri");
+const hyvaksyEvasteet = document.getElementById("hyvaksyEvasteet");
+const vainValttamattomat = document.getElementById("vainValttamattomat");
+
+if (evasteBanneri && hyvaksyEvasteet && vainValttamattomat) {
+  if (!localStorage.getItem("evasteValinta")) {
+    evasteBanneri.classList.add("evaste-banneri--nayta");
+  }
+
+  hyvaksyEvasteet.addEventListener("click", () => {
+    localStorage.setItem("evasteValinta", "all");
+    evasteBanneri.classList.remove("evaste-banneri--nayta");
+  });
+
+  vainValttamattomat.addEventListener("click", () => {
+    localStorage.setItem("evasteValinta", "necessary");
+    evasteBanneri.classList.remove("evaste-banneri--nayta");
+  });
+}

@@ -184,6 +184,9 @@ lomake.addEventListener("submit", async (tapahtuma) => {
 // -------------------------------
 // Evästeet
 // -------------------------------
+// -------------------------------
+// Evästeet
+// -------------------------------
 
 const evasteBanneri = document.getElementById("evasteBanneri");
 const hyvaksyEvasteet = document.getElementById("hyvaksyEvasteet");

@@ -1108,6 +1108,7 @@ background-repeat: no-repeat;
     display: flex;
   }
 
+  
   .hero {
     padding: 3rem 0;
     background-size: cover;
@@ -1119,6 +1120,16 @@ background-repeat: no-repeat;
     background-size:cover;
     background-position:center;
     min-height:55vh;
+    background-image:
+      linear-gradient(
+        rgba(0, 0, 0, 0.45),
+        rgba(0, 0, 0, 0.35)
+      ),
+      url("kuvat/Taustakuva4.jpg");
+    background-size: cover;
+    background-position: center;
+    min-height: 55vh;
+    padding: 3rem 0;
 }
 
 
@@ -1129,7 +1140,19 @@ background-repeat: no-repeat;
   .hero-teksti {
     font-size: 1rem;
   }
-  
+
+  .hero h1,
+.hero-teksti,
+.hero-alaotsikko {
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.polut .osio-otsikko--keskitetty p {
+  text-align: center;
+  text-align-last: center;
+}
+
+
   .polku-kortit,
   .hyoty-kortit,
   .kokemus-kortit {

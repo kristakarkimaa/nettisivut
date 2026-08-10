@@ -207,3 +207,43 @@ if (evasteBanneri && hyvaksyEvasteet && vainValttamattomat) {
     evasteBanneri.classList.remove("evaste-banneri--nayta");
   });
 }
+
+// -------------------------------
+// Tietosuojaseloste
+// -------------------------------
+
+const avaaTietosuoja = document.getElementById("avaaTietosuoja");
+const tietosuojaModali = document.getElementById("tietosuojaModali");
+const suljeTietosuoja = document.getElementById("suljeTietosuoja");
+const suljeTietosuojaTausta = document.getElementById("suljeTietosuojaTausta");
+
+function avaaTietosuojaModali() {
+  tietosuojaModali.classList.add("tietosuoja-modali--auki");
+  tietosuojaModali.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modali-auki");
+}
+
+function suljeTietosuojaModali() {
+  tietosuojaModali.classList.remove("tietosuoja-modali--auki");
+  tietosuojaModali.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("modali-auki");
+}
+
+if (avaaTietosuoja && tietosuojaModali) {
+  avaaTietosuoja.addEventListener("click", (e) => {
+    e.preventDefault();
+    avaaTietosuojaModali();
+  });
+
+  suljeTietosuoja.addEventListener("click", suljeTietosuojaModali);
+  suljeTietosuojaTausta.addEventListener("click", suljeTietosuojaModali);
+
+  document.addEventListener("keydown", (e) => {
+    if (
+      e.key === "Escape" &&
+      tietosuojaModali.classList.contains("tietosuoja-modali--auki")
+    ) {
+      suljeTietosuojaModali();
+    }
+  });
+}

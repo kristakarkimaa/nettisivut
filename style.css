@@ -1048,6 +1048,102 @@ background-repeat: no-repeat;
 }
 
 /* ============================================
+   TIETOSUOJASELOSTE – MODAALI
+   ============================================ */
+
+   .tietosuoja-modali {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    padding: 2rem 1rem;
+  }
+  
+  .tietosuoja-modali--auki {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .tietosuoja-modali__tausta {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+  }
+  
+  .tietosuoja-modali__sisalto {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 760px);
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 2.5rem;
+    background: var(--vari-pinta);
+    border-radius: var(--sade-iso);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  }
+  
+  .tietosuoja-modali h2 {
+    font-family: var(--fontti-otsikko);
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .tietosuoja-modali h3 {
+    font-family: var(--fontti-otsikko);
+    font-size: 1.15rem;
+    margin-top: 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .tietosuoja-modali p,
+  .tietosuoja-modali li {
+    color: var(--vari-teksti-himmea);
+  }
+  
+  .tietosuoja-modali p {
+    margin-bottom: 1rem;
+  }
+  
+  .tietosuoja-modali ul {
+    margin: 0 0 1rem 1.5rem;
+  }
+  
+  .tietosuoja-modali a {
+    color: var(--vari-korostus);
+  }
+  
+  .tietosuoja-paivitetty {
+    font-size: 0.9rem;
+  }
+  
+  .tietosuoja-sulje {
+    position: absolute;
+    top: 1rem;
+    right: 1.25rem;
+    border: 0;
+    background: transparent;
+    color: var(--vari-teksti);
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+  
+  body.modali-auki {
+    overflow: hidden;
+  }
+  
+  @media (max-width: 768px) {
+    .tietosuoja-modali {
+      padding: 1rem;
+    }
+  
+    .tietosuoja-modali__sisalto {
+      padding: 2rem 1.5rem;
+      max-height: 90vh;
+    }
+  }
+/* ============================================
    FOOTER
    ============================================ */
 .footer {

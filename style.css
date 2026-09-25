@@ -233,7 +233,7 @@ a {
   url("kuvat/Taustakuva5.1.jpg");
 
 background-size: 100%;
-background-position: center;
+background-position: center 85%;
 background-repeat: no-repeat;
 }
 
@@ -250,7 +250,7 @@ background-repeat: no-repeat;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--vari-korostus);
+  color: #ffffff;
   margin-bottom: 1rem;
 }
 
